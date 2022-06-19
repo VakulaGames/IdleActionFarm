@@ -6,7 +6,8 @@ public class Plant : MonoBehaviour
 {
     [SerializeField] private PlantAnimation _plantAnimation;
     [SerializeField] private PlantEdit _edit;
-
+    [SerializeField] private Collider _collider;
+    [SerializeField] private GameObject _grassDrop;
 
     private void OnEnable()
     {
@@ -20,11 +21,23 @@ public class Plant : MonoBehaviour
 
     private void Start()
     {
-        _plantAnimation.SmoothGrowing(_edit.growingTime);
+        StartGrowing();
+    }
+
+    public void Cutting()
+    {
+        StartGrowing();
+        Instantiate(_grassDrop,transform.position, Quaternion.identity);
+    }
+
+    private void StartGrowing()
+    {
+        _collider.enabled = false;
+        _plantAnimation.SmoothGrowing(_edit.growingTime, _edit.finishEffectTime);
     }
 
     private void AllowToMow()
     {
-        Debug.Log("Можно косить");
+        _collider.enabled = true;
     }
 }

@@ -4,4 +4,5 @@ using UnityEngine;
 public class PlantEdit : ScriptableObject
 {
     [Range(0, 100)] public float growingTime;
+    [Range(0, 100)] public float finishEffectTime;
 }

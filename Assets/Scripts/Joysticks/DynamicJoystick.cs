@@ -5,6 +5,9 @@ using UnityEngine.EventSystems;
 
 public class DynamicJoystick : Joystick
 {
+    [SerializeField] private Detector _detector;
+    [SerializeField] private CharacterAnimation _characterAnimation;
+
     public float MoveThreshold { get { return moveThreshold; } set { moveThreshold = Mathf.Abs(value); } }
 
     [SerializeField] private float moveThreshold = 1;
@@ -27,6 +30,11 @@ public class DynamicJoystick : Joystick
     {
         background.gameObject.SetActive(false);
         base.OnPointerUp(eventData);
+
+        if (_detector.detectedObjects.Length > 0)
+        {
+            _characterAnimation.Cut();
+        }
     }
 
     protected override void HandleInput(float magnitude, Vector2 normalised, Vector2 radius, Camera cam)

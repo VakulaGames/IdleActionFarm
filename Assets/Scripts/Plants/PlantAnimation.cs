@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using System;
@@ -17,9 +15,15 @@ public class PlantAnimation : MonoBehaviour
         _sequence.Append(transform.DOScale(0, 0));
     }
 
-    public void SmoothGrowing(float timeGrowing)
+    public void SmoothGrowing(float timeGrowing, float finishEffectTime)
     {
+        _sequence = DOTween.Sequence();
+        _sequence.Append(transform.DOScale(0, 0));
         _sequence.Append(transform.DOScale(1, timeGrowing));
+
+        _sequence.Append(transform.DOScale(1.4f, finishEffectTime / 2));
+        _sequence.Append(transform.DOScale(1.2f, finishEffectTime / 4));
+
         _sequence.AppendCallback(GrownFinish);
     }
 

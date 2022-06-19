@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f6bfddc58ed3804dae119a0c6861207, type: 3}
-  m_Name: Grass
+  m_Script: {fileID: 11500000, guid: 01c858fc44814764b9ada18e61cf7a94, type: 3}
+  m_Name: StacktEdit
   m_EditorClassIdentifier: 
-  growingTime: 10
-  finishEffectTime: 0.3
+  harvestDuration: 1
+  sellDuration: 1
