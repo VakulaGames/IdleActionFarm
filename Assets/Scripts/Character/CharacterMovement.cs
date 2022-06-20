@@ -8,6 +8,8 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private Transform _playerTransform;
     [SerializeField] private Joystick _joystick;
 
+    public float Speed { get; private set; }
+
     private bool _moveAllowed;
 
     private void OnEnable()
@@ -29,9 +31,9 @@ public class CharacterMovement : MonoBehaviour
     {
         if (_moveAllowed == true)
         {
-            float speed = Mathf.Abs(_joystick.Horizontal) + Mathf.Abs(_joystick.Vertical);
+            Speed = Mathf.Abs(_joystick.Horizontal) + Mathf.Abs(_joystick.Vertical);
 
-            _animation.Movement(speed);
+            _animation.Movement(Speed);
 
             if (_joystick.Direction != Vector2.zero)
             {

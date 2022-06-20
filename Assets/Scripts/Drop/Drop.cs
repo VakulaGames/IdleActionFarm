@@ -3,7 +3,9 @@ using DG.Tweening;
 
 public class Drop : MonoBehaviour
 {
-    [SerializeField] private StackEdit _edit;
+    [SerializeField] private PlantEdit _edit;
+
+    public int Price => _edit.price;
 
     private Sequence _sequence;
 
